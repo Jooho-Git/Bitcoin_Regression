@@ -3,7 +3,6 @@
 
 
 ## Model 
----
 
 ### DeepAR
 DeepAR 간단한 설명?
@@ -13,7 +12,6 @@ Nbeats 간단한 설명?
   
 
 ## Usage 
---- 
 DeepAR 모델에서는 gpu 지원이 되지 않습니다.   
 Nbeats 모델은 gpu 사용 가능합니다. 
 
@@ -41,36 +39,35 @@ python main.py --datadir ../{dataset} --logdir ./{logs} --dataname {dataname.csv
 
 
 
-## File Directory
---- 
+## File Directory  
 
 ```bash
 .
 ├─── DeepAR
-|    ├── dataloader.py
-|    ├── dataset.py
-|    ├── evaluate.py
-|    ├── main.py
-|    ├── model.py
-|    ├── train.py
-|    ├── utils.py
-|    └── logs
-|     
+│    ├── dataloader.py
+│    ├── dataset.py
+│    ├── evaluate.py
+│    ├── main.py
+│    ├── model.py
+│    ├── train.py
+│    ├── utils.py
+│    └── logs
+│     
 ├─── Nbeats
-|    ├── dataloader.py
-|    ├── dataset.py
-|    ├── evaluate.py
-|    ├── main.py
-|    ├── model.py
-|    ├── train.py
-|    ├── utils.py
-|    └── logs 
-|
+│    ├── dataloader.py
+│    ├── dataset.py
+│    ├── evaluate.py
+│    ├── main.py
+│    ├── model.py
+│    ├── train.py
+│    ├── utils.py
+│    └── logs 
+│
 ├─── dataset 
 ```
 
 ## Reference
----
+
 
 - [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](abs/1704.04110)  
 
