@@ -1,0 +1,19 @@
+{
+    "datadir": "../dataset",
+    "logdir": "./logs",
+    "savedir": "../save",
+    "dataname": "benchmark_Temp.csv",
+    "target_feature": "Temp",
+    "input_window": 70,
+    "output_window": 35,
+    "stride": 1,
+    "train_rate": 0.8,
+    "batch_size": 64,
+    "epochs": 100,
+    "lr": 0.001,
+    "hidden_layer_units": 128,
+    "metric": "MAPE",
+    "dropout_rate": 0.3,
+    "n_samples": 1,
+    "memo": "\uc2e4\ud5d8"
+}
