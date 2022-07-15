@@ -7,18 +7,18 @@
 ### DeepAR
 - LSTM 구조 기반의 Probabilistic Forecasting model로서 미래 시점의 확률분포를 예측하는 모델입니다.  
 본 모델에서는 Gaussian likelihood fuction을 최대화하는 방식으로 학습하여 모수인 $\mu(h_{i,t})$와 $\sigma(h_{i,t})$를 도출하고, 해당 분포에서 예측값을 샘플링합니다.  
-![image](https://user-images.githubusercontent.com/72960666/179205556-2a4d99d4-9af5-4502-82d2-9a1dd25ba0ea.png)  
+![1](https://user-images.githubusercontent.com/72960666/179213451-60f064e6-ba83-4b6c-b30f-e9272f47ae53.png)
 
-- DeepAR은 비트코인 차트 일봉에서 우수한 성능을 보이며 Probabilistic Forecasting model이기에 quantile confidence interval을 도출할 수 있습니다.  
-해당 모델은 일봉 2만개를 학습했으며 실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.
-![2](https://user-images.githubusercontent.com/72960666/179214359-38a0bca3-028d-4f59-9226-7a285a52a853.png)  
+- DeepAR은 비트코인 일봉 차트에서 우수한 성능을 보이며, Probabilistic Forecasting model의 특성을 이용하여 quantile confidence interval을 도출했습니다.  
+- 본 모델은 일봉 1700개를 200epoch으로 학습했으며 실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.
+![image](https://user-images.githubusercontent.com/72960666/179216495-e31ee890-d74a-459f-8738-909e1353d0ea.png)  
 
 
 ### Nbeats 
-- 경향성(Trend), 계절성(Seasonality)을 분해하는 Deep neural network 구조를 통해 시계열 예측에서 설명성을 확보하는 모델입니다.  
-여러 Trend, Seasonality Block으로 이루어진 Trend, Seasonality Stack 구조를 기반으로 학습하여 예측값을 도출합니다.  
-통계적인 추정을 가능하게 하기 위해 dropout을 추가했고, 50번 샘플링하여 예측값들의 모평균에 대해 구간 추정했습니다.
-![1](https://user-images.githubusercontent.com/72960666/179213451-60f064e6-ba83-4b6c-b30f-e9272f47ae53.png)
+- 경향성(Trend), 계절성(Seasonality)을 분해하는 Deep neural network 구조를 통해 시계열 예측에서 설명성을 확보하는 모델입니다. 여러 Trend, Seasonality Block으로 이루어진 Trend, Seasonality Stack 구조를 기반으로 학습하여 예측값을 도출합니다.  
+- 통계적인 추정을 가능하게 하기 위해 dropout을 추가했고, 50번 샘플링하여 예측값들의 모평균에 대해 구간 추정했습니다.
+![image](https://user-images.githubusercontent.com/72960666/179215150-570a797e-7ec8-4681-8b19-542c2a4fdc7c.png)
+
 
 - 본 모델은 5분봉 2500개를 200epoch으로 학습했으며 실제 예측 시, 12시간을 학습하고 향후 4시간을 예측합니다.  
 ![nbeats_final_prediction_2 5K_200 (1)](https://user-images.githubusercontent.com/72960666/179210339-6e3fee10-b444-469a-a527-93dfa25ce60b.png)
