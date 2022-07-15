@@ -5,11 +5,19 @@
 ## Model 
 
 ### DeepAR
-DeepAR 간단한 설명?
+- LSTM 구조 기반의 Probabilistic Forecasting model로서 미래 시점의 확률분포를 예측하는 모델입니다.  
+본 모델에서는 Gaussian likelihood fuction을 최대화하는 방식으로 학습하여 모수인 $\mu(h_{i,t})$와 $\sigma(h_{i,t})$를 도출하고, 해당 분포에서 예측값을 샘플링합니다.  
+![image](https://user-images.githubusercontent.com/72960666/179205556-2a4d99d4-9af5-4502-82d2-9a1dd25ba0ea.png)  
+
 
 ### Nbeats 
-Nbeats 간단한 설명?
-  
+- 경향성(Trend), 계절성(Seasonality)을 분해하는 Deep neural network 구조를 통해 시계열 예측에서 설명성을 확보하는 모델입니다.
+여러 Trend, Seasonality Block으로 이루어진 Trend, Seasonality Stack을 학습하여 예측값을 도출합니다.
+
+![image](https://user-images.githubusercontent.com/72960666/179208261-46fe7a1c-409c-4272-93c6-6a4abddd8c32.png)
+![nbeats_final_prediction_2 5K_200 (1)](https://user-images.githubusercontent.com/72960666/179210339-6e3fee10-b444-469a-a527-93dfa25ce60b.png)
+![nbeats2K_200_pred_2](https://user-images.githubusercontent.com/72960666/179210395-7706af05-5f49-4d44-abfd-3d7338478f74.png)
+
 
 ## Usage 
 DeepAR 모델에서는 gpu 지원이 되지 않습니다.   
