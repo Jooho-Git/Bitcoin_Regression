@@ -7,11 +7,12 @@
 ### DeepAR
 - LSTM 구조 기반의 Probabilistic Forecasting model로서 미래 시점의 확률분포를 예측하는 모델입니다.  
 본 모델에서는 Gaussian likelihood fuction을 최대화하는 방식으로 학습하여 모수인 $\mu(h_{i,t})$와 $\sigma(h_{i,t})$를 도출하고, 해당 분포에서 예측값을 샘플링합니다.  
-![1](https://user-images.githubusercontent.com/72960666/179213451-60f064e6-ba83-4b6c-b30f-e9272f47ae53.png)
+![3](https://user-images.githubusercontent.com/72960666/179217003-168d68b9-2cf7-480e-ab49-cc322b1adb14.png)
+
 
 - DeepAR은 비트코인 일봉 차트에서 우수한 성능을 보이며, Probabilistic Forecasting model의 특성을 이용하여 quantile confidence interval을 도출했습니다.  
 - 본 모델은 일봉 1700개를 200epoch으로 학습했으며 실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.
-![image](https://user-images.githubusercontent.com/72960666/179216495-e31ee890-d74a-459f-8738-909e1353d0ea.png)  
+![2](https://user-images.githubusercontent.com/72960666/179216855-f36a44bd-3e9a-421a-819e-037816345ee7.png)
 
 
 ### Nbeats 
