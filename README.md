@@ -122,6 +122,7 @@ python main.py --datadir {../dataset} --logdir {./logs} --dataname {upbit_ohlcv_
 │    ├── model.py
 │    ├── train.py
 │    ├── utils.py
+│    ├── Benchmark_validation
 │    └── logs 
 │
 ├─── dataset 
