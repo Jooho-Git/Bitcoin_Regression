@@ -1,0 +1,19 @@
+{
+    "datadir": "../dataset",
+    "logdir": "./logs",
+    "savedir": "../save",
+    "dataname": "benchmark_Births.csv",
+    "target_feature": "Births",
+    "input_window": 30,
+    "output_window": 15,
+    "stride": 1,
+    "train_rate": 0.8,
+    "batch_size": 64,
+    "epochs": 100,
+    "lr": 0.001,
+    "hidden_layer_units": 128,
+    "metric": "MASE",
+    "dropout_rate": 0.3,
+    "n_samples": 1,
+    "memo": "benchmark_births_nodropout"
+}
