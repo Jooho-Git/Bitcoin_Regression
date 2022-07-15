@@ -22,7 +22,7 @@
 - 본 모델은 5분봉 2500개를 200epoch으로 학습했으며 실제 예측 시, 12시간을 학습하고 향후 4시간을 예측합니다.  
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224264-0a97d10e-42e8-48d3-90f9-992d399ec40f.png" width="750" height="335"></p>
 
-- 테스트  
+- Test   
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224348-a584da49-23e5-47b9-84d9-3a2f0778379e.png" width="750" height="335"></p>
 
 ## Usage 
