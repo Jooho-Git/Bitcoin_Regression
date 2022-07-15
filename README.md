@@ -7,23 +7,23 @@
 ### DeepAR
 - LSTM 구조 기반의 Probabilistic Forecasting model로서 미래 시점의 확률분포를 예측하는 모델입니다.  
 본 모델에서는 Gaussian likelihood fuction을 최대화하는 방식으로 학습하여 모수인 $\mu(h_{i,t})$와 $\sigma(h_{i,t})$를 도출하고, 해당 분포에서 예측값을 샘플링합니다.  
-<center><img src = "https://user-images.githubusercontent.com/72960666/179221891-e40ca517-b72c-4d60-94b1-50c6c3a27f0d.png" width="400" height="600"></center>
+<p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179221891-e40ca517-b72c-4d60-94b1-50c6c3a27f0d.png" width="750" height="350"></p>
 
 
 - DeepAR은 비트코인 일봉 차트에서 우수한 성능을 보이며, Probabilistic Forecasting model의 특성을 이용하여 quantile confidence interval을 도출했습니다.  
-- 본 모델은 일봉 1700개를 200epoch으로 학습했으며 실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.
-<center><img src = "https://user-images.githubusercontent.com/72960666/179223127-7a4318c1-6de5-44f1-969a-43315812f127.png" width="400" height="800"></center>
+- 본 모델은 일봉 1700개를 100epoch으로 학습했으며 실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.
+<p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223127-7a4318c1-6de5-44f1-969a-43315812f127.png" width="950" height="275"></p>
 
 ### Nbeats 
 - 경향성(Trend), 계절성(Seasonality)을 분해하는 Deep neural network 구조를 통해 시계열 예측에서 설명성을 확보하는 모델입니다. 여러 Trend, Seasonality Block으로 이루어진 Trend, Seasonality Stack 구조를 기반으로 학습하여 예측값을 도출합니다.  
 - 통계적인 추정을 가능하게 하기 위해 dropout을 추가했고, 50번 샘플링하여 예측값들의 모평균에 대해 구간 추정했습니다.  
-<center><img src = "https://user-images.githubusercontent.com/72960666/179223862-d92ac345-94a2-45eb-ae3c-9dd0e4440aa9.png" width="500" height="500"></center>
+<p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223862-d92ac345-94a2-45eb-ae3c-9dd0e4440aa9.png" width="600" height="400"></p>
 
 - 본 모델은 5분봉 2500개를 200epoch으로 학습했으며 실제 예측 시, 12시간을 학습하고 향후 4시간을 예측합니다.  
-<center><img src = "https://user-images.githubusercontent.com/72960666/179224264-0a97d10e-42e8-48d3-90f9-992d399ec40f.png" width="500" height="500"></center>
+<p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224264-0a97d10e-42e8-48d3-90f9-992d399ec40f.png" width="780" height="335"></p>
 
 - 테스트  
-<center><img src = "https://user-images.githubusercontent.com/72960666/179224348-a584da49-23e5-47b9-84d9-3a2f0778379e.png" width="500" height="500"></center> 
+<p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224348-a584da49-23e5-47b9-84d9-3a2f0778379e.png" width="780" height="335"></p>
 
 ## Usage 
 DeepAR 모델에서는 gpu 지원이 되지 않습니다.   
