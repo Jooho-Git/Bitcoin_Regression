@@ -5,33 +5,33 @@
 ## Model 
 
 ### DeepAR
-- LSTM 구조 기반의 **Probabilistic Forecasting model**로서 미래 시점의 확률분포를 예측하는 모델입니다.  
-본 모델에서는 Gaussian likelihood fuction을 최대화하는 방식으로 학습하여 모수인 $\mu(h_{i,t})$와 $\sigma(h_{i,t})$를 도출하고, 해당 분포에서 예측값을 샘플링합니다.  
+- It is an LSTM structure-based **Probabilistic Forecasting model** that predicts the probability distribution of a time period in the future.
+- The model is trained in a way that maximizes Gaussian likelihood function to derive parameters, $\mu(h_{i,t})$ and $\sigma(h_{i,t})$, and sample prediction values from their distributions.
+
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179221891-e40ca517-b72c-4d60-94b1-50c6c3a27f0d.png" width="750" height="350"></p>
 
 
-- **DeepAR은 비트코인 일봉 차트에서 우수한 성능**을 보이며, Probabilistic Forecasting model의 특성을 이용하여 **quantile confidence interval**을 도출했습니다.  
-- 본 모델은 일봉 1700개를 100epoch으로 학습했으며 **실제 예측 시, 50일을 학습하고 향후 25일을 예측합니다.**
+- **DeepAR performs well on daily chart** and we visualized **quantile confidence interval** as well.    
+- This model is trained with 1700 real bodies in daily charts at 100epoch. **On actual forecasting, it learns 50 days and predicts the next 25 days.**
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223127-7a4318c1-6de5-44f1-969a-43315812f127.png" width="750" height="300"></p>
 
-### Nbeats 
-- **경향성(Trend), 계절성(Seasonality)을 분해**하는 Deep neural network 구조를 통해 시계열 예측에서 설명성을 확보하는 모델입니다. 여러 Trend, Seasonality Block으로 이루어진 Trend, Seasonality Stack 구조를 기반으로 학습하여 예측값을 도출합니다.  
-- **통계적인 추정**을 가능하게 하기 위해 **dropout**을 추가했고, 50번 샘플링하여 예측값들의 모평균에 대해 구간 추정했습니다.  
+### N-BEATS 
+- N-BEATS has an interpretable architecture that decomposes its forecast into two distinct components, **trend** and **seasonality**. It predicts Bitcoin prices using deep neural network with trend and seasonality stacks each composed of multiple trend and seasonality blocks.  
+- **To enable statistical estimation in visualizing the prediction**, we added **dropout** at a rate of 0.2 to the model and sampled 50 times. As a result, we can get a confidence interval for the population mean of 50 predictions at each time period.  
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223862-d92ac345-94a2-45eb-ae3c-9dd0e4440aa9.png" width="570" height="400"></p>
 
-- 본 모델은 5분봉 2500개를 200epoch으로 학습했으며 **실제 예측 시, 12시간을 학습하고 향후 4시간을 예측합니다.**  
+- This model is trained with 2500 real bodies in 5-minute charts at 200epoch. **On actual forecasting, it learns 12 hours and predicts the next 4 hours.**  
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224264-0a97d10e-42e8-48d3-90f9-992d399ec40f.png" width="750" height="335"></p>
 
 - Test   
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179224348-a584da49-23e5-47b9-84d9-3a2f0778379e.png" width="750" height="335"></p>
 
-## Usage 
-DeepAR 모델에서는 gpu 지원이 되지 않습니다.   
-Nbeats 모델은 gpu 사용 가능합니다. 
+## Usage  
+GPU is available only on N-BEATS model  
 
 ### 1. Installation 
 ```
-git clone https://github.com/ToBigs1617-TS/Regression.git
+git clone https://github.com/Jooho-Git/Regression.git
 pip install -r requirement.txt
 ```
 
@@ -41,14 +41,14 @@ pip install -r requirement.txt
 ```
 cd DeepAR
 
-python main.py --datadir {../dataset} --logdir {./logs} --dataname {upbit_ohlcv_1700.csv} --target_feature {close} --input_window {50} --output_window {25} --stride {1} --train_rate {0.8} --batch_size {64} --epochs {100} --lr {1e-3} --embedding_size {10} --hidden_size {50} --num_layers {1} --likelihood {'g'} --n_samples {20} --metric {MAPE} --memo {실험}
+python main.py --datadir {../dataset} --logdir {./logs} --dataname {upbit_ohlcv_1700.csv} --target_feature {close} --input_window {50} --output_window {25} --stride {1} --train_rate {0.8} --batch_size {64} --epochs {100} --lr {1e-3} --embedding_size {10} --hidden_size {50} --num_layers {1} --likelihood {'g'} --n_samples {20} --metric {MAPE} --memo {experiment}
 ```
 
 #### Nbeats --option {default}
 ```
 cd Nbeats 
 
-python main.py --datadir {../dataset} --logdir {./logs} --dataname {upbit_ohlcv_1700.csv} --target_feature {close} --input_window {50} --output_window {25} --stride {1} --train_rate {0.8} --batch_size {64} --epochs {1000} --lr {1e-3} --hidden_layer_units {128} --metric {MAPE} --dropout_rate {0.3} --n_samples {30} --memo {실험}
+python main.py --datadir {../dataset} --logdir {./logs} --dataname {upbit_ohlcv_1700.csv} --target_feature {close} --input_window {50} --output_window {25} --stride {1} --train_rate {0.8} --batch_size {64} --epochs {1000} --lr {1e-3} --hidden_layer_units {128} --metric {MAPE} --dropout_rate {0.3} --n_samples {30} --memo {experiment}
 ```  
 
 #### Base Arguments
