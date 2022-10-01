@@ -5,19 +5,19 @@
 ## Model 
 
 ### DeepAR
-- It is an LSTM structure-based **Probabilistic Forecasting model** that predicts the probability distribution of a time period in the future.
+- DeepAR is an LSTM structure-based **Probabilistic Forecasting model** that predicts the probability distribution of time periods in the future.
 - The model is trained in a way that maximizes Gaussian likelihood function to derive parameters, $\mu(h_{i,t})$ and $\sigma(h_{i,t})$, and sample prediction values from their distributions.
 
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179221891-e40ca517-b72c-4d60-94b1-50c6c3a27f0d.png" width="750" height="350"></p>
 
 
-- **DeepAR performs well on daily chart** and we visualized **quantile confidence interval** as well.    
+- **DeepAR performs well on daily chart** and we visualized **quantile confidence interval**.    
 - This model is trained with 1700 real bodies in daily charts at 100epoch. **On actual forecasting, it learns 50 days and predicts the next 25 days.**
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223127-7a4318c1-6de5-44f1-969a-43315812f127.png" width="750" height="300"></p>
 
 ### N-BEATS 
 - N-BEATS has an interpretable architecture that decomposes its forecast into two distinct components, **trend** and **seasonality**. It predicts Bitcoin prices using deep neural network with trend and seasonality stacks each composed of multiple trend and seasonality blocks.  
-- **To enable statistical estimation in visualizing the prediction**, we added **dropout** at a rate of 0.2 to the model and sampled 50 times. As a result, we can get a confidence interval for the population mean of 50 predictions at each time period.  
+- **To enable statistical estimation**, we added **dropout** at a rate of 0.2 to the model and sampled 50 times. As a result, we can get a **confidence interval** for the population mean of 50 predictions at each time period.  
 <p align="center"><img src = "https://user-images.githubusercontent.com/72960666/179223862-d92ac345-94a2-45eb-ae3c-9dd0e4440aa9.png" width="570" height="400"></p>
 
 - This model is trained with 2500 real bodies in 5-minute charts at 200epoch. **On actual forecasting, it learns 12 hours and predicts the next 4 hours.**  
