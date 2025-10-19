@@ -267,15 +267,21 @@ class ModelTest:
 
     def confidence_interval(self, mc_samples, alpha=0.01, tau_inv=0.0):
         """
-        Posterior predictive interval from MC dropout samples.
-        mc_samples: (T, H)
-        alpha: significance level, e.g. 0.01 -> 99% interval
+        Compute the prediction interval:
+            [mean - z * sqrt(s^2 + 1/tau),  mean + z * sqrt(s^2 + 1/tau)]
+        Returns:
+            mean : np.ndarray (H,)
+            lower : np.ndarray (H,)
+            upper : np.ndarray (H,)
         """
         mc_samples = np.asarray(mc_samples)
         assert mc_samples.ndim == 2, "mc_samples must be (T, H)"
+
         mean = mc_samples.mean(axis=0)
+        s2 = ((mc_samples - mean) ** 2).mean(axis=0)
+        sigma_hat = np.sqrt(s2 + tau_inv)
+        z = norm.ppf(1 - alpha / 2)
 
-        lo_q = np.quantile(mc_samples, alpha/2, axis=0)
-        hi_q = np.quantile(mc_samples, 1 - alpha/2, axis=0)
-
-        return mean, lo_q, hi_q
+        lower = mean - z * sigma_hat
+        upper = mean + z * sigma_hat
+        return mean, lower, upper
